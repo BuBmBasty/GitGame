@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2782b3239456acf40bed05b7775da0b3, type: 3}
+  m_Name: DoublePistols
+  m_EditorClassIdentifier: 
+  _name: Double pistols
+  _weapon: {fileID: 7926437442947356977, guid: 0213b1d134172484e9006c2c4ee1f07e, type: 3}
+  _bullet: {fileID: 4625324410364098517, guid: 2b49c927f3749f14fbdba021f294bde8, type: 3}
+  _damage: 5
+  _blast: 0
+  _spread: 1
+  _magazine: 30
+  _startCostWeapon: 300
+  _startCostUpgrade: 50
+  _upToUpdateCost: 1.1
