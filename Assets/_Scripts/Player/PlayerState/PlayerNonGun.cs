@@ -5,17 +5,17 @@ namespace _Scripts.Player.PlayerState
 {
     public class PlayerNonGun : BaseState
     {
-        private PlayerSM _pSm;
+        private PlayerSm _pSm;
         private float _currentSpeed, _currentFloat;
-        public PlayerNonGun(PlayerSM stateMachine) : base("BaseNonGun", stateMachine)
+        public PlayerNonGun(PlayerSm stateMachine) : base("BaseNonGun", stateMachine)
         {
-            _pSm = (PlayerSM)stateMachine;
+            _pSm = (PlayerSm)stateMachine;
         }
 
    
         public override void Enter()
         {
-            _pSm.animatorController.SetFireState(false);
+            _pSm.Fire.Invoke(false);
             _pSm.gunController.Fire(false);
         }
 
@@ -34,13 +34,11 @@ namespace _Scripts.Player.PlayerState
                 _currentFloat = _pSm.movementJoy.Direction.magnitude;
                 _currentSpeed = Mathf.Lerp(_pSm.walkSpeed, _pSm.runSpeed, _currentFloat);
                 _pSm.thisTransform.up = _pSm.movementJoy.Direction;
-                _pSm.animatorController.SetMovement(_currentFloat);
-                _pSm.character2DController.Move(_pSm.movementJoy.Direction*_currentSpeed);
+                _pSm.MoveNoneGun.Invoke(_pSm.movementJoy.Direction*_currentSpeed,_currentFloat);
             }
             else
             {
-                _pSm.character2DController.Move(Vector2.zero);
-                _pSm.animatorController.SetMovement(0);
+                _pSm.Move.Invoke(0,0);
             }
         }
     }

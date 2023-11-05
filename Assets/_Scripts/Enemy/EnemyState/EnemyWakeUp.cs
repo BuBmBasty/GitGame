@@ -13,7 +13,7 @@ namespace _Scripts.Enemy.EnemyState
 
         public override void Enter()
         {
-            _enemySm.enemyAnimatorController.RunAnimation(0);
+            _enemySm.Move.Invoke(0,0);
         }
 
 

@@ -15,14 +15,10 @@ namespace _Scripts.Enemy
         public EnemyPunch enemyPunch => _enemyPunch;
         public EnemyAnimatorController enemyAnimatorController => _enemyAnimatorController;
         public Character2DController character2DController => _character2DController;
-        public float runSpeed => _runSpeed;
+       
         public float punchDistance => _punchDistance;
     
         [SerializeField]private EnemyAnimatorController _enemyAnimatorController;
-
-
-        [Header("Speed data")] 
-        [SerializeField] private float _runSpeed;
 
         [SerializeField] private float _punchDistance;
 
@@ -37,7 +33,6 @@ namespace _Scripts.Enemy
             _enemyPunch = new EnemyPunch(this);
             _enemyRun = new EnemyRun(this);
             _enemyWakeUp = new EnemyWakeUp(this);
-        
         }
 
         void Start()

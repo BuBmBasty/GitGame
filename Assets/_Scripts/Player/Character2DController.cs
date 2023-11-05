@@ -1,3 +1,4 @@
+using _Scripts.StateMachine;
 using UnityEngine;
 
 namespace _Scripts.Player
@@ -10,11 +11,18 @@ namespace _Scripts.Player
         {
             _collider = GetComponent<CircleCollider2D>();
             _rb2D = GetComponent<Rigidbody2D>();
+            GetComponent<BaseControllerSm>().Move.AddListener(Move);
+            if (TryGetComponent<PlayerSm>(out var playerSM))
+                playerSM.MoveNoneGun.AddListener(Move);
         }
 
-        public void Move(Vector2 direction)
+        public void Move(float inputX, float inputY)
         {
-            _rb2D.velocity = direction;
+            _rb2D.velocity = new Vector2(inputX,inputY);
+        }
+        public void Move(Vector2 move, float inputY)
+        {
+            _rb2D.velocity = move;
         }
     }
 }

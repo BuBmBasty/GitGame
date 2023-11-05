@@ -16,7 +16,7 @@ namespace _Scripts.Enemy.EnemyState
 
         public override void Enter()
         {
-            _enemySm.enemyAnimatorController.RunAnimation(1);
+            _enemySm.Move.Invoke(0,1);
             _enemySm.enemyAnimatorController.PunchAnimation(false);
         }
 
@@ -33,7 +33,7 @@ namespace _Scripts.Enemy.EnemyState
         {
             _direction = _enemySm.target.position - _enemySm.thisTransform.position;
             _enemySm.thisTransform.up = _direction.normalized;
-            _enemySm.character2DController.Move(_direction.normalized*_enemySm.runSpeed);
+            _enemySm.Move.Invoke(_direction.normalized.x*_enemySm.runSpeed,_direction.normalized.y*_enemySm.runSpeed);
         }
     }
 }

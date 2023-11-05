@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace _Scripts.Enemy
@@ -13,6 +14,10 @@ namespace _Scripts.Enemy
         private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
         private static readonly int Punch = Animator.StringToHash("Punch");
 
+        private void Start()
+        {
+            GetComponentInParent<EnemySm>().Move.AddListener(RunAnimation);
+        }
 
         public void StartWakeUp()
         {
@@ -26,9 +31,9 @@ namespace _Scripts.Enemy
             _isWakeUp = true;
         }
 
-        public void RunAnimation(float speed)
+        public void RunAnimation(float speedX, float speedY)
         {
-            _animator.SetFloat(MoveSpeed,1);
+            _animator.SetFloat(MoveSpeed,speedY);
         }
         public void PunchAnimation(bool isPunch)
         {

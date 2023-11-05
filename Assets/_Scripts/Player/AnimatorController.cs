@@ -10,21 +10,26 @@ namespace _Scripts.Player
         private static readonly int InputY = Animator.StringToHash("InputY");
         private static readonly int InputX = Animator.StringToHash("InputX");
         private static readonly int Fire = Animator.StringToHash("Fire");
+        
+        
 
         private void Awake()
         {
             _animator = GetComponentInChildren<Animator>();
             _rigBuilder = GetComponentInChildren<RigBuilder>();
-        }
-
-        public void SetMovement(float input)
-        {
-            _animator.SetFloat(InputY, input);
+            var playerSM = GetComponent<PlayerSm>();
+            playerSM.Move.AddListener(SetMovement);
+            playerSM.MoveNoneGun.AddListener(SetMovement);
+            playerSM.Fire.AddListener(SetFireState);
         }
         public void SetMovement(float inputX, float inputY)
         {
             _animator.SetFloat(InputY, inputY);
             _animator.SetFloat(InputX, inputX);
+        }
+        public void SetMovement(Vector2 move, float magnitude)
+        {
+            _animator.SetFloat(InputY, magnitude);
         }
 
         public void SetFireState(bool isFire)

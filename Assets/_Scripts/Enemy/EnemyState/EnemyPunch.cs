@@ -16,8 +16,8 @@ namespace _Scripts.Enemy.EnemyState
         public override void Enter()
         {
             _enemySm.enemyAnimatorController.PunchAnimation(true);
-            _enemySm.enemyAnimatorController.RunAnimation(0);
-            _enemySm.character2DController.Move(Vector2.zero);
+            _enemySm.enemyAnimatorController.RunAnimation(0,0);
+            _enemySm.character2DController.Move(0,0);
         }
     
         public override void UpdateLogic()

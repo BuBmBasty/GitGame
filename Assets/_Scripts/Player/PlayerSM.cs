@@ -5,71 +5,62 @@ using _Scripts.StateMachine;
 using _Scripts.Weapon;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
+using UnityEngine.Events;
 
 namespace _Scripts.Player
 {
-    public class PlayerSM : BaseControllerSm
+    public class PlayerSm : BaseControllerSm
     {
-        public AnimatorController animatorController => _animatorController;
-        public Character2DController character2DController=>_character2DController;
-        public Transform thisTransform=>_thisTransform;
-        public float walkSpeed => _walkSpeed;
-        public float runSpeed => _runSpeed;
-        public Joystick movementJoy=>_movementJoy;
-        public Joystick fireJoystick=>_fireJoystick;
-        public PlayerNonGun playerNonGun=>_playerNonGun;
-        public PlayerGunState playerGunState=>_playerGunState;
-        public BaseGunController gunController=>_gunController;
-    
-        [Header("Player speed data")]
-        [SerializeField] private float _walkSpeed;
-        [SerializeField] private float _runSpeed;
-    
-        [Header("Player start weapon")]
-        [SerializeField] private WeaponSO _startWeapon;
-    
-        [Header("Player controller")]
+        [HideInInspector] public  UnityEvent<Vector2, float> MoveNoneGun;
+        public Joystick movementJoy => _movementJoy;
+        public Joystick fireJoystick => _fireJoystick;
+        [Header("Player controller")] 
         [SerializeField] private Joystick _movementJoy;
-        [SerializeField] private Joystick _fireJoystick;
+        [SerializeField] public Joystick _fireJoystick;
 
         [Header("Animation Rig Datas")] 
         [SerializeField] private ChainIKConstraint _leftHandRig;
+
         [SerializeField] private ChainIKConstraint _rightHandRig;
 
-        private PlayerNonGun _playerNonGun;
-        private PlayerGunState _playerGunState;
-        private AnimatorController _animatorController;
-        private Character2DController _character2DController;
-        private Transform _thisTransform;
-        private BaseGunController _gunController;
+        public PlayerNonGun playerNonGun {get;private set; }
+
+        public PlayerGunState playerGunState { get;private set; }
+
+        public Transform thisTransform{ get;private set; }
+
+        public BaseGunController gunController{ get;private set; }
+
+        [Header("Player start weapon")]
+        [SerializeField] private WeaponSO _startWeapon;
 
         private void Awake()
         {
-            _thisTransform = GetComponent<Transform>();
+            thisTransform = GetComponent<Transform>();
         }
 
 
         private void Start()
         {
-            GameController.instance.SetTarget(_thisTransform);
-            _animatorController = GetComponent<AnimatorController>();
-            _character2DController = GetComponent<Character2DController>();
-            _playerNonGun = new PlayerNonGun(this);
-            _playerGunState = new PlayerGunState(this);
+            GameController.instance.SetTarget(thisTransform);
+            
+            playerNonGun = new PlayerNonGun(this);
+            playerGunState = new PlayerGunState(this);
+            
             CreateStartWeapon(_startWeapon);
-            ChangeState(_playerNonGun);
+            ChangeState(playerNonGun);
         }
         protected override BaseState GetInitialState()
         {
-            return _playerNonGun;
+            return playerNonGun;
         }
         private void CreateStartWeapon(WeaponSO weaponSO)
         {
-            _gunController = Instantiate(weaponSO.weapon, _thisTransform);
-            _leftHandRig.data.target = _gunController.GetLeftHandTransform();
-            _rightHandRig.data.target = _gunController.GetRightHandTransform();
-            _gunController.StartData(weaponSO.bullet,weaponSO.spread, weaponSO.magazine,weaponSO.blast,weaponSO.damage);
-            _animatorController.RebindAnimator();
+            gunController = Instantiate(weaponSO.weapon, thisTransform);
+            _leftHandRig.data.target = gunController.GetLeftHandTransform();
+            _rightHandRig.data.target = gunController.GetRightHandTransform();
+            gunController.StartData(weaponSO.bullet,weaponSO.spread, weaponSO.magazine,weaponSO.blast,weaponSO.damage);
+            GetComponent<AnimatorController>().RebindAnimator();
         }
     }
 }

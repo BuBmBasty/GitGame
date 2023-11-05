@@ -7,7 +7,7 @@ namespace _Scripts.Weapon
 {
     public class BaseGunController : MonoBehaviour
     {
-        [SerializeField] protected string _weaponName = "Double Pistols";
+        [SerializeField] protected string _weaponName;
        
         [Header("Visuals ParticleSystem")]
         [SerializeField] protected ParticleSystem[] missles;
