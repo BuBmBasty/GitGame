@@ -13,7 +13,7 @@ namespace _Scripts.Player
             _rb2D = GetComponent<Rigidbody2D>();
             GetComponent<BaseControllerSm>().Move.AddListener(Move);
             if (TryGetComponent<PlayerSm>(out var playerSM))
-                playerSM.MoveNoneGun.AddListener(Move);
+                playerSM.moveNoneGun.AddListener(Move);
         }
 
         public void Move(float inputX, float inputY)

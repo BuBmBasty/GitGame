@@ -1,21 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameArena : BaseGameState
+namespace _Scripts.StateMachine.GameStateMachin.GameState
 {
-    private BaseGameStateMachine _gameStateMachine;
-
-    public GameArena(BaseGameStateMachine stateMachine) : base("GameArena", stateMachine)
+    public class GameArena : BaseGameState
     {
-        _gameStateMachine = stateMachine;
-    }
+        private GameSM _gameStateMachine;
 
-    public override void Enter()
-    {
-        Debug.Log(("GameArena"));
-        if (SceneManager.GetActiveScene().name != "GameArena")
-            SceneManager.LoadScene("GameArena");
+        public GameArena(string statename, GameSM stateMachine) : base(statename, stateMachine)
+        {
+            name = statename;
+            _gameStateMachine = stateMachine;
+        }
+
+        public override void Enter()
+        {
+            Debug.Log((name));
+            if (SceneManager.GetActiveScene().name != "GameArena")
+                SceneManager.LoadScene("GameArena");
+        }
     }
 }

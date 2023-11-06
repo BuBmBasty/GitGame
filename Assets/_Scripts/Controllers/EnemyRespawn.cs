@@ -69,6 +69,17 @@ namespace _Scripts.Controllers
             GameController.instance.AddEnemy();
         }
 
+        public Transform FirstActiveTransform()
+        {
+            foreach (var need in _enemySms)
+            {
+                if (need.gameObject.activeSelf)
+                    return need.transform;
+            }
+
+            return null;
+        }
+
         private void PoolEnemyCreate()
         {
             var enemy = Instantiate(_zombie,transform);

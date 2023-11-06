@@ -19,7 +19,7 @@ namespace _Scripts.Player
             _rigBuilder = GetComponentInChildren<RigBuilder>();
             var playerSM = GetComponent<PlayerSm>();
             playerSM.Move.AddListener(SetMovement);
-            playerSM.MoveNoneGun.AddListener(SetMovement);
+            playerSM.moveNoneGun.AddListener(SetMovement);
             playerSM.Fire.AddListener(SetFireState);
         }
         public void SetMovement(float inputX, float inputY)

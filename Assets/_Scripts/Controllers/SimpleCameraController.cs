@@ -17,6 +17,7 @@ namespace _Scripts.Controllers
 
         private void LateUpdate()
         {
+            _thisTR.rotation = Quaternion.Euler(0,0,0);
             _thisTR.position = _target.position - _offset;
         }
     }

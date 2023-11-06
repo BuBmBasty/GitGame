@@ -1,17 +1,20 @@
 using UnityEngine;
 
-public class BaseGameState : MonoBehaviour
+namespace _Scripts.StateMachine.GameStateMachin
 {
-   
-        
-    protected BaseGameStateMachine stateMachine;
-
-    public BaseGameState(string name, BaseGameStateMachine stateMachine)
+    public class BaseGameState : MonoBehaviour
     {
-        this.name = name;
-        this.stateMachine = stateMachine;
+        public string name;
+        
+        protected BaseGameStateMachine StateMachine;
+
+        public BaseGameState(string name, BaseGameStateMachine stateMachine)
+        {
+            this.name = name;
+            StateMachine = stateMachine;
+        }
+        public virtual void Enter() {}
+        public virtual void UpdateLogic() {}
+        public virtual void Exit() {}
     }
-    public virtual void Enter() {}
-    public virtual void UpdateLogic() {}
-    public virtual void Exit() {}
 }

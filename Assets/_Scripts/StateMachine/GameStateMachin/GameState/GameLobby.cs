@@ -1,21 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameLobby : BaseGameState
+namespace _Scripts.StateMachine.GameStateMachin.GameState
 {
-    private BaseGameStateMachine _gameStateMachine;
-
-    public GameLobby(BaseGameStateMachine stateMachine) : base("GameLobby", stateMachine)
+    public class GameLobby : BaseGameState
     {
-        _gameStateMachine = stateMachine;
-    }
+        private GameSM _gameStateMachine;
 
-    public override void Enter()
-    {
-        Debug.Log("GameLobby");
-        if (SceneManager.GetActiveScene().name != "Lobby")
-            SceneManager.LoadScene("Lobby");
+        public GameLobby(string statename, GameSM stateMachine) : base(statename, stateMachine)
+        {
+            name = statename;
+            _gameStateMachine = stateMachine;
+        }
+
+        public override void Enter()
+        {
+            Debug.Log(name);
+            if (SceneManager.GetActiveScene().name != "Lobby")
+                SceneManager.LoadScene("Lobby");
+        }
     }
 }

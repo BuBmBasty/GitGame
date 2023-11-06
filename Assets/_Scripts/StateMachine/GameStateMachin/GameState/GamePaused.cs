@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using _Scripts.StateMachine.GameStateMachin;
 using UnityEngine;
 
 public class GamePaused : BaseGameState
 {
-    private BaseGameStateMachine _gameStateMachine;
-    public GamePaused(BaseGameStateMachine stateMachine) : base("GamePaused", stateMachine)
+    private GameSM _gameStateMachine;
+    public GamePaused(string statename, GameSM stateMachine) : base(statename, stateMachine)
     {
+        name = statename;
         _gameStateMachine = stateMachine;
     }
 }

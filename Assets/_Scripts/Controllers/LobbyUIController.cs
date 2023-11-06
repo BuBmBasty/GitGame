@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+using _Scripts.StateMachine.GameStateMachin;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,12 +26,13 @@ public class LobbyUIController : MonoBehaviour
         _optionsButton.gameObject.SetActive(false);
         _exitButton.gameObject.SetActive(false);
         _loadingPanel.SetActive(true);
-        StartCoroutine(StartGameCoroutine());
+        var timer = Random.Range(1, 5);
+        StartCoroutine(StartGameCoroutine(timer));
     }
 
-    IEnumerator StartGameCoroutine()
+    IEnumerator StartGameCoroutine(float timer)
     {
-        yield return new WaitForSeconds(Random.Range(10, 20));
-        GameSM.Instance.ChangeStateWithNaming.Invoke(_nameGameState);
+        yield return new WaitForSeconds(timer);
+        GameSM.Instance.changeStateWithNaming.Invoke(_nameGameState);
     }
 }

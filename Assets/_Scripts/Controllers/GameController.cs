@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
+using _Scripts.StateMachine.GameStateMachin;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 namespace _Scripts.Controllers
 {
@@ -8,7 +11,7 @@ namespace _Scripts.Controllers
     {
         public static GameController instance = null;
         [HideInInspector]public UnityEvent _enemyDead;
-    
+        [SerializeField] private CinematicCameraTransform _cinemaCamera;
         [Header("Respawn data")]
         [SerializeField] private int _stageCount;
         [SerializeField] private int _maxEnemyOnMap;
@@ -21,6 +24,7 @@ namespace _Scripts.Controllers
         private int _lvl;
         void Awake()
         {
+            _cinemaCamera.gameObject.SetActive(false);
             if (instance == null) 
             {
                 instance = this; 
@@ -50,6 +54,7 @@ namespace _Scripts.Controllers
             _target = target;
         }
     
+        [Obsolete("Obsolete")]
         private void CheckEnemyCount()
         {
             _contEnemy--;
@@ -66,6 +71,9 @@ namespace _Scripts.Controllers
             }
             else if (_contEnemy<=0)
             {
+                _cinemaCamera.gameObject.SetActive(true);
+                _cinemaCamera.target = EnemyRespawn.Instance.FirstActiveTransform();
+                GameSM.Instance.changeStateWithNaming.Invoke("GameBulletTime");
                 StartCoroutine(StartNewStage());
             }
         }
@@ -73,6 +81,7 @@ namespace _Scripts.Controllers
         IEnumerator StartNewStage()
         {
             yield return new WaitForSeconds(5f);
+            _cinemaCamera.gameObject.SetActive(false);
             _deadEnemy=0;
             _stageCount += _upCount;
             _maxEnemyOnMap += _upEnemyOnMap;

@@ -15,14 +15,14 @@ namespace _Scripts.Player.PlayerState
       public override void Enter()
       {
          _pSm.Fire.Invoke(true);
-         _pSm.gunController.Fire(true);
+         _pSm.GunController.Fire(true);
       }
 
       public override void UpdateLogic()
       {
-         if (_pSm.fireJoystick.Direction == Vector2.zero)
+         if (_pSm.FireJoystick.Direction == Vector2.zero)
          {
-            _pSm.ChangeState(_pSm.playerNonGun);
+            _pSm.ChangeState(_pSm.PlayerNonGun);
          }
       }
 
@@ -33,14 +33,14 @@ namespace _Scripts.Player.PlayerState
 
       public override void UpdateMovement()
       {
-         _pSm.thisTransform.up = _pSm.fireJoystick.Direction;
+         _pSm.ThisTransform.up = _pSm.FireJoystick.Direction;
       
-         if (_pSm.movementJoy.Direction != Vector2.zero)
+         if (_pSm.MovementJoy.Direction != Vector2.zero)
          {
-            _currentFloat = _pSm.movementJoy.Direction.magnitude;
+            _currentFloat = _pSm.MovementJoy.Direction.magnitude;
             _currentSpeed = Mathf.Lerp(_pSm.walkSpeed, _pSm.runSpeed, _currentFloat);
-            _movementVector = _pSm.thisTransform.TransformVector(_pSm.movementJoy.Direction);
-            _pSm.Move.Invoke(_pSm.movementJoy.Direction.x*_currentSpeed,_pSm.movementJoy.Direction.y*_currentSpeed);
+            _movementVector = _pSm.ThisTransform.TransformVector(_pSm.MovementJoy.Direction);
+            _pSm.Move.Invoke(_pSm.MovementJoy.Direction.x*_currentSpeed,_pSm.MovementJoy.Direction.y*_currentSpeed);
          }
          else
          {

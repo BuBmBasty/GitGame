@@ -225,6 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcdc65efdbf28024cb51e142389476c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: GameShop
 --- !u!114 &356571605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,6 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c3b4ff807aa95d41b0a5098ee57aa24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: GameArena
 --- !u!114 &356571606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6dcc82f16cf87c44946067a6511ad60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: GameLobby
 --- !u!114 &356571607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,6 +264,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380fd34b5ca55f84fa2d6940551576e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: GameBulletTime
+  _bulletTimer: 4
+  _timerCount: 2
 --- !u!114 &356571608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca91c4feb69120459fdd4b8ee8f9aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: GameArena
 --- !u!114 &356571609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,11 +292,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dc895bc055ab6f4aa93dd8243946f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChangeStateWithNaming:
+  changeStateWithNaming:
     m_PersistentCalls:
       m_Calls: []
-  _startState: {fileID: 356571606}
-  _gameStates: []
+  startState: {fileID: 356571606}
+  gameStates: []
 --- !u!4 &356571610
 Transform:
   m_ObjectHideFlags: 0
@@ -1354,19 +1361,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1785715647}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 356571609}
-        m_TargetAssemblyTypeName: BaseGameStateMachine, Assembly-CSharp
-        m_MethodName: ChangeState
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 356571608}
-          m_ObjectArgumentAssemblyTypeName: BaseGameState, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1785715647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1588,7 +1583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _loadingTextString: Loading
-  _timingAnimation: 1
+  _timingAnimation: 0.1
   _numberOfLettersInAnimations: 3
 --- !u!114 &1957350399
 MonoBehaviour:

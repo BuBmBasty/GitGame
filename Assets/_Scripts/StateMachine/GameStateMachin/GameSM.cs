@@ -1,35 +1,58 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GameSM : BaseGameStateMachine
+namespace _Scripts.StateMachine.GameStateMachin
 {
-    
-    [HideInInspector] public  UnityEvent<string> ChangeStateWithNaming;
-
-    [SerializeField] private BaseGameState _startState;
-    [SerializeField] private BaseGameState[] _gameStates;
-
-    #region SingleTone
-    private static GameSM _instance;
-    public static GameSM Instance => _instance;
-    #endregion
-    
-    void Start()
+    public class GameSM : BaseGameStateMachine
     {
-        ChangeStateWithNaming.AddListener(ChangeStateWithName);
-        _gameStates = GetComponents<BaseGameState>();
-        ChangeState(_startState);
-        DontDestroyOnLoad(gameObject);
-    }
+    
+        [HideInInspector] public  UnityEvent<string> changeStateWithNaming;
 
-    private void ChangeStateWithName(string nameState)
-    {
-        foreach (var state in _gameStates)
+        [SerializeField] private BaseGameState startState;
+        [SerializeField] private BaseGameState[] gameStates;
+
+        #region SingleTone
+        private static GameSM _instance;
+        public static GameSM Instance => _instance;
+
+        private void Awake()
         {
-            if (state.name == nameState)
-                ChangeState(state);
+            if (Instance == null) 
+            {
+                _instance = this; 
+            } 
+            else if(Instance == this)
+            { 
+                Destroy(gameObject); 
+            }
+            DontDestroyOnLoad(gameObject);
+#if  UNITY_EDITOR
+            Application.targetFrameRate = 120;
+#else  
+            Application.targetFrameRate = 60;
+#endif
         }
-    }
+
+        #endregion
+    
+        void Start()
+        {
+            changeStateWithNaming.AddListener(ChangeStateWithName);
+            gameStates = GetComponents<BaseGameState>();
+            ChangeState(startState);
+        }
+
+        private void ChangeStateWithName(string nameState)
+        {
+            foreach (var state in gameStates)
+            {
+                if (state.name == nameState)
+                {
+                    ChangeState(state);
+                }
+            }
+        }
 
     
+    }
 }
