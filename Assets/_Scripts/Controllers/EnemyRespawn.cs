@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using _Scripts.Enemy;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 namespace _Scripts.Controllers
 {
     public class EnemyRespawn : MonoBehaviour
     {
+        public UnityEvent RespawnEnemy;
         public static EnemyRespawn Instance;
     
         [SerializeField] private EnemySm _zombie;
@@ -29,6 +31,7 @@ namespace _Scripts.Controllers
             { 
                 Destroy(gameObject); 
             }
+            RespawnEnemy.AddListener(CreateEnemyFromPool);
             DontDestroyOnLoad(gameObject);
         }
         private void Start()
@@ -37,16 +40,17 @@ namespace _Scripts.Controllers
             {
                 PoolEnemyCreate();
             }
+            
         }
 
-        public void CreateEnemyFromPool()
+        private void CreateEnemyFromPool()
         {
             foreach (var enemy in _enemySms)
             {
-                if (!enemy.isActive)
+                if (!enemy.gameObject.activeSelf)
                 {
                     enemy.isActive = true;
-                    StartCoroutine(ActivateEnemy(enemy));
+                    ActivateEnemy(enemy);
                     return;
                 }
             }
@@ -54,9 +58,8 @@ namespace _Scripts.Controllers
             ActivateEnemy(_enemySms[^1]);
         }
 
-        private IEnumerator ActivateEnemy(EnemySm enemySm)
+        private void ActivateEnemy(EnemySm enemySm)
         {
-            yield return new WaitForSeconds(Random.Range(0,3));
             enemySm.gameObject.SetActive(true);
             _randX = Random.Range(-1*_radiusRespawn, _radiusRespawn);
             _randY = Random.Range(-1*_radiusRespawn, _radiusRespawn);

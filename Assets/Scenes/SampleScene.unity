@@ -314,6 +314,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62590b912f00ac842ad0ef2935c6a020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RespawnEnemy:
+    m_PersistentCalls:
+      m_Calls: []
   _zombie: {fileID: 7256174411974548629, guid: cf8e3c15f2649264b816d4cd047f2682, type: 3}
   _radiusRespawn: 22.5
   _poolCount: 50

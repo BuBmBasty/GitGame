@@ -33,7 +33,10 @@ namespace _Scripts.Enemy
 
         public void RunAnimation(float speedX, float speedY)
         {
-            _animator.SetFloat(MoveSpeed,speedY);
+            if (speedY !=0)
+                _animator.SetFloat(MoveSpeed,1);
+            else
+                _animator.SetFloat(MoveSpeed,0);
         }
         public void PunchAnimation(bool isPunch)
         {

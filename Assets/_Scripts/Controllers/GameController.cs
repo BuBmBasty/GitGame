@@ -7,7 +7,7 @@ namespace _Scripts.Controllers
     public class GameController : MonoBehaviour
     {
         public static GameController instance = null;
-        public UnityEvent _enemyDead;
+        [HideInInspector]public UnityEvent _enemyDead;
     
         [Header("Respawn data")]
         [SerializeField] private int _stageCount;
@@ -61,7 +61,7 @@ namespace _Scripts.Controllers
                 for (int i = 0; i < _maxEnemyOnMap - _contEnemy;i++)
                 {
                     if (_contEnemy+_deadEnemy >= _stageCount-1) break;
-                    EnemyRespawn.Instance.CreateEnemyFromPool();
+                    StartCoroutine(RandomiserTimeToRespawn());
                 }
             }
             else if (_contEnemy<=0)
@@ -79,7 +79,7 @@ namespace _Scripts.Controllers
             NewStageRespawn();
         }
 
-        private void NewStageRespawn()
+        private async void NewStageRespawn()
         {
             _lvl++;
             UIController.Instance.UpdateLevel(_lvl);
@@ -96,8 +96,14 @@ namespace _Scripts.Controllers
             }
             for (int i = 0; i < _startRes; i++)
             {
-                EnemyRespawn.Instance.CreateEnemyFromPool();
+                StartCoroutine(RandomiserTimeToRespawn());
             }
+        }
+
+        IEnumerator RandomiserTimeToRespawn()
+        {
+            yield return new WaitForSeconds(Random.Range(0, 3));
+            EnemyRespawn.Instance.RespawnEnemy.Invoke();
         }
 
         public void AddEnemy()

@@ -5745,8 +5745,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a8082d046318c0a4bb0162606364b597, type: 2}
-  - {fileID: 2100000, guid: a67006042548d954e9e630c46922dc39, type: 2}
+  - {fileID: 2100000, guid: 161e4cb06ca457149b7769573f078414, type: 2}
+  - {fileID: 2100000, guid: 1fa6a1c17fb889545ba9a573f455d6f1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11174,10 +11174,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd6dae48a2c5ea4781bf84b0b2fa4e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isActive: 0
+  Move:
+    m_PersistentCalls:
+      m_Calls: []
+  Fire:
+    m_PersistentCalls:
+      m_Calls: []
+  _walkSpeed: 0
   _runSpeed: 15
-  _punchDistance: 1.8
+  isActive: 0
   _enemyAnimatorController: {fileID: 3998864633062456024}
+  _punchDistance: 1.8
 --- !u!114 &5472604018877014550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16993,12 +17000,17 @@ PrefabInstance:
     - target: {fileID: 273358682676457422, guid: d283f498e8d98914f9466d7338f11b3e,
         type: 3}
       propertyPath: InitialModule.startSpeed.scalar
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 273358682676457422, guid: d283f498e8d98914f9466d7338f11b3e,
         type: 3}
       propertyPath: InitialModule.startSpeed.minScalar
-      value: 3
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 273358682676457422, guid: d283f498e8d98914f9466d7338f11b3e,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 273358682676457422, guid: d283f498e8d98914f9466d7338f11b3e,
         type: 3}
