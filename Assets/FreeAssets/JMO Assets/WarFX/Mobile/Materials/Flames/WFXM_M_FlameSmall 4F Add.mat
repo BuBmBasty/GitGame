@@ -29,7 +29,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _InvFade: 1.045
+    - _InvFade: 3
     - _ScrollSpeed: -4
     - _ScrollSpeedX: 14
     - _ScrollSpeedY: 0

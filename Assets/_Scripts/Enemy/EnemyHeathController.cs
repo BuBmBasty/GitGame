@@ -67,7 +67,7 @@ namespace _Scripts.Enemy
             }
         }
 
-        private void Dead(float damage, Vector3 direction)
+        public override void Dead(float damage, Vector3 direction)
         {
             _enemySM.enabled = false;
             _isDead = true;

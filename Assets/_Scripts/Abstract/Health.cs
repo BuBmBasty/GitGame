@@ -8,5 +8,9 @@ namespace _Scripts.Abstract
     {
     
     }
+    public virtual void Dead(float damage, Vector3 direction)
+    {
+    
+    }
   }
 }
