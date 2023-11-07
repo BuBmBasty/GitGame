@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class LobbyUIController : MonoBehaviour
 {
+    [SerializeField] private GameObject _buttonPanel;
     [Header("Play Button Setting")]
     [SerializeField] private Button _playButton;
-    [SerializeField] private string _nameGameState;
+    [SerializeField] private TypeOfGameState _startGameState;
     [Header("Options Button Setting")]
     [SerializeField] private Button _optionsButton;
+    [SerializeField] private GameObject _optionsWindow;
     [Header("Exit Button Setting")]
     [SerializeField] private Button _exitButton;
     [Header("Loading panel Setting")]
@@ -17,7 +19,16 @@ public class LobbyUIController : MonoBehaviour
     void Start()
     {
         _playButton.onClick.AddListener(Play);
+        _optionsButton.onClick.AddListener(OpenOptionsWindow);
         _loadingPanel.SetActive(false);
+        _optionsWindow.SetActive(false);
+        _buttonPanel.SetActive(true);
+    }
+
+    private void OpenOptionsWindow()
+    {
+        _optionsWindow.SetActive(true);
+        _buttonPanel.SetActive(false);
     }
 
     private void Play()
@@ -33,6 +44,6 @@ public class LobbyUIController : MonoBehaviour
     IEnumerator StartGameCoroutine(float timer)
     {
         yield return new WaitForSeconds(timer);
-        GameSM.Instance.changeStateWithNaming.Invoke(_nameGameState);
+        GameSM.Instance.changeStateWithNaming.Invoke(_startGameState);
     }
 }

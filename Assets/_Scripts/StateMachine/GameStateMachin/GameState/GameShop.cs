@@ -5,10 +5,8 @@ using UnityEngine;
 
 public class GameShop : BaseGameState
 {
-    private GameSM _gameStateMachine;
-    public GameShop(string statename, GameSM stateMachine) : base(statename, stateMachine)
+   
+    public GameShop(GameSM stateMachine) : base(stateMachine)
     {
-        name = statename;
-        _gameStateMachine = stateMachine;
     }
 }

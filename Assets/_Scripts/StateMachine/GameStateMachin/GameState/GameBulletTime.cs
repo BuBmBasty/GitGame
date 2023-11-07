@@ -6,17 +6,16 @@ namespace _Scripts.StateMachine.GameStateMachin.GameState
     public class GameBulletTime : BaseGameState
     {
         [SerializeField] private float _bulletTimer, _timerCount;
-        private GameSM _gameStateMachine;
+      
         
 
-        public GameBulletTime(string statename, GameSM stateMachine) : base(statename, stateMachine)
+        public GameBulletTime( GameSM stateMachine) : base(stateMachine)
         {
-            name = statename;
-            _gameStateMachine = stateMachine;
         }
 
         public override void Enter()
         {
+            Debug.Log((Name));
             Time.timeScale = 1 / _timerCount;
             StartCoroutine(ReturnTime());
         }
@@ -25,7 +24,8 @@ namespace _Scripts.StateMachine.GameStateMachin.GameState
         {
             yield return new WaitForSeconds(_bulletTimer);
             Time.timeScale = 1;
-            _gameStateMachine.changeStateWithNaming.Invoke("GameArena");
+            gameStateMachine.changeStateWithNaming.Invoke(TypeOfGameState.GameArena);
         }
+       
     }
 }

@@ -6,7 +6,7 @@ namespace _Scripts.StateMachine.GameStateMachin
     public class GameSM : BaseGameStateMachine
     {
     
-        [HideInInspector] public  UnityEvent<string> changeStateWithNaming;
+        [HideInInspector] public  UnityEvent<TypeOfGameState> changeStateWithNaming;
 
         [SerializeField] private BaseGameState startState;
         [SerializeField] private BaseGameState[] gameStates;
@@ -42,11 +42,11 @@ namespace _Scripts.StateMachine.GameStateMachin
             ChangeState(startState);
         }
 
-        private void ChangeStateWithName(string nameState)
+        private void ChangeStateWithName(TypeOfGameState nameState)
         {
             foreach (var state in gameStates)
             {
-                if (state.name == nameState)
+                if (state.Name == nameState)
                 {
                     ChangeState(state);
                 }

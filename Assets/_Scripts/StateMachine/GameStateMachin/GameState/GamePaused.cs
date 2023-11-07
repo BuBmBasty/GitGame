@@ -5,10 +5,8 @@ using UnityEngine;
 
 public class GamePaused : BaseGameState
 {
-    private GameSM _gameStateMachine;
-    public GamePaused(string statename, GameSM stateMachine) : base(statename, stateMachine)
+   
+    public GamePaused(GameSM stateMachine) : base(stateMachine)
     {
-        name = statename;
-        _gameStateMachine = stateMachine;
     }
 }

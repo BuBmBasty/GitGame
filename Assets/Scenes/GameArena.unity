@@ -317,6 +317,9 @@ MonoBehaviour:
   RespawnEnemy:
     m_PersistentCalls:
       m_Calls: []
+  DeadEnemy:
+    m_PersistentCalls:
+      m_Calls: []
   _zombie: {fileID: 7256174411974548629, guid: cf8e3c15f2649264b816d4cd047f2682, type: 3}
   _radiusRespawn: 22.5
   _poolCount: 50
@@ -1072,7 +1075,7 @@ Light:
   m_CookieSize: 10
   m_Shadows:
     m_Type: 1
-    m_Resolution: -1
+    m_Resolution: 0
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0
@@ -1104,7 +1107,7 @@ Light:
     serializedVersion: 2
     m_Bits: 1
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -2333,7 +2336,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1428599054}
   - component: {fileID: 1428599056}
-  - component: {fileID: 1428599055}
   - component: {fileID: 1428599057}
   m_Layer: 0
   m_Name: Camera
@@ -2357,14 +2359,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1883858865}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &1428599055
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1428599053}
-  m_Enabled: 1
 --- !u!20 &1428599056
 Camera:
   m_ObjectHideFlags: 0
