@@ -11,6 +11,7 @@ namespace _Scripts.Controllers
         {
             transform.position = target.position -10 * Vector3.forward;
             transform.rotation = target.rotation;
+            transform.Rotate(0,0,180);
         }
     }
 }

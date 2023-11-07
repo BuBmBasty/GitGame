@@ -11,6 +11,7 @@ namespace _Scripts.Controllers
     public class EnemyRespawn : MonoBehaviour
     {
         public UnityEvent RespawnEnemy;
+        public UnityEvent<Transform> DeadEnemy;
         public static EnemyRespawn Instance;
     
         [SerializeField] private EnemySm _zombie;
@@ -19,7 +20,7 @@ namespace _Scripts.Controllers
 
         private List<EnemySm> _enemySms = new();
         private float _randX, _randY, _randAngle;
-
+        private Transform _finalEnemyTransform;
 
         private void Awake() 
         {
@@ -32,6 +33,7 @@ namespace _Scripts.Controllers
                 Destroy(gameObject); 
             }
             RespawnEnemy.AddListener(CreateEnemyFromPool);
+            DeadEnemy.AddListener(UpdateDeadTransform);
             DontDestroyOnLoad(gameObject);
         }
         private void Start()
@@ -69,15 +71,14 @@ namespace _Scripts.Controllers
             GameController.instance.AddEnemy();
         }
 
-        public Transform FirstActiveTransform()
+        public Transform FinalEnemyTransform()
         {
-            foreach (var need in _enemySms)
-            {
-                if (need.gameObject.activeSelf)
-                    return need.transform;
-            }
+            return _finalEnemyTransform;
+        }
 
-            return null;
+        private void UpdateDeadTransform(Transform enemy)
+        {
+            _finalEnemyTransform = enemy;
         }
 
         private void PoolEnemyCreate()

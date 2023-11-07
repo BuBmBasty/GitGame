@@ -69,6 +69,7 @@ namespace _Scripts.Enemy
 
         public override void Dead(float damage, Vector3 direction)
         {
+            EnemyRespawn.Instance.DeadEnemy.Invoke(_thisTransform);
             _enemySM.enabled = false;
             _isDead = true;
             _collider2D.enabled = false;
@@ -76,7 +77,7 @@ namespace _Scripts.Enemy
             _rigidbody2D.velocity = Vector2.zero;
             _animator.enabled = false;
             _ragdollController.AddRagDoll();
-            _ragdollController.AddForce(direction*damage*10);
+            _ragdollController.AddForce(direction*damage*Random.Range(10,20));
         }
     }
 }

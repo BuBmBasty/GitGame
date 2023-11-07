@@ -265,8 +265,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: GameBulletTime
-  _bulletTimer: 4
-  _timerCount: 2
+  _bulletTimer: 2
+  _timerCount: 4
 --- !u!114 &356571608
 MonoBehaviour:
   m_ObjectHideFlags: 0

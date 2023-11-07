@@ -72,7 +72,7 @@ namespace _Scripts.Controllers
             else if (_contEnemy<=0)
             {
                 _cinemaCamera.gameObject.SetActive(true);
-                _cinemaCamera.target = EnemyRespawn.Instance.FirstActiveTransform();
+                _cinemaCamera.target = EnemyRespawn.Instance.FinalEnemyTransform();
                 GameSM.Instance.changeStateWithNaming.Invoke("GameBulletTime");
                 StartCoroutine(StartNewStage());
             }
