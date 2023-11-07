@@ -1,4 +1,5 @@
 using _Scripts.Controllers;
+using _Scripts.StateMachine.GameStateMachin;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +16,7 @@ public class OptionsUIController : MonoBehaviour
    [SerializeField] private GraphicsUISetting _graphicsController;
    [Header("Game Options")] 
    [SerializeField] private Button _gameButton;
-   [SerializeField] private VolumeController _gameController;
+   [SerializeField] private GameUIControllers _gameController;
 
    private void Start()
    {
@@ -30,6 +31,11 @@ public class OptionsUIController : MonoBehaviour
    {
       _buttons.SetActive(true);
       gameObject.SetActive(false);
+      if (GameSM.Instance.currentState.Name == TypeOfGameState.GamePause)
+      {
+         Time.timeScale = 1;
+         GameSM.Instance.changeStateWithNaming.Invoke(GameSM.Instance.previouseState);
+      }
    }
 
    private void OnGameController()

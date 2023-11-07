@@ -1,11 +1,18 @@
+using _Scripts.StateMachine.GameStateMachin;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _Scripts.Controllers
 {
     public class UIController : MonoBehaviour
     {
         public static UIController Instance = null;
+        [Header("Menu data")]
+        [SerializeField] private Button _menuButton;
+        [SerializeField] private OptionsUIController _menuGameObject;
+        [SerializeField] private GameObject _gameUI;
+        [SerializeField] private TypeOfGameState _menuState;
         
         [Header("Weapon data")]
         [SerializeField] private TMP_Text _ammo;
@@ -31,7 +38,16 @@ namespace _Scripts.Controllers
                 Destroy(gameObject); 
             }
             DontDestroyOnLoad(gameObject);
+            _menuButton.onClick.AddListener(MenuOpen);
             _newStageAnimator = _newStage.gameObject.GetComponent<Animator>();
+            _menuGameObject.gameObject.SetActive(false);
+        }
+
+        private void MenuOpen()
+        {
+            _menuGameObject.gameObject.SetActive(true);
+            GameSM.Instance.changeStateWithNaming.Invoke(_menuState);
+            _gameUI.SetActive(false);
         }
 
         public void TextAmmoUpdate(int cont)

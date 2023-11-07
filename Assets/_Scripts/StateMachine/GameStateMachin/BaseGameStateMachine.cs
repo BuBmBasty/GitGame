@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class BaseGameStateMachine : MonoBehaviour
 {
+    public BaseGameState currentState=>_currentState;
     private BaseGameState _currentState;
     public void ChangeState(BaseGameState newState)
     {
