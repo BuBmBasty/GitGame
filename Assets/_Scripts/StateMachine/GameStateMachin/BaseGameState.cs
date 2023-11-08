@@ -6,14 +6,14 @@ namespace _Scripts.StateMachine.GameStateMachin
     public class BaseGameState : MonoBehaviour
     {
         public TypeOfGameState Name=>_name;
-        public GameSM gameStateMachine => _gameStateMachine;
-        private GameSM _gameStateMachine;
+        public GameSm gameStateMachine => _gameStateMachine;
+        private GameSm _gameStateMachine;
         protected BaseGameStateMachine StateMachine;
         [SerializeField] private TypeOfGameState _name;
 
         private void Start()
         {
-            _gameStateMachine = GetComponent<GameSM>();
+            _gameStateMachine = GetComponent<GameSm>();
         }
 
         public BaseGameState(BaseGameStateMachine stateMachine)

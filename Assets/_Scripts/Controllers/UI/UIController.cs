@@ -46,7 +46,7 @@ namespace _Scripts.Controllers
         private void MenuOpen()
         {
             _menuGameObject.gameObject.SetActive(true);
-            GameSM.Instance.changeStateWithNaming.Invoke(_menuState);
+            GameSm.Instance.changeStateWithNaming.Invoke(_menuState);
             _gameUI.SetActive(false);
         }
 

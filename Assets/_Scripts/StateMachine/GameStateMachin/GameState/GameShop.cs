@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameShop : BaseGameState
 {
    
-    public GameShop(GameSM stateMachine) : base(stateMachine)
+    public GameShop(GameSm stateMachine) : base(stateMachine)
     {
     }
 }

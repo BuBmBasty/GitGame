@@ -11,7 +11,7 @@ namespace _Scripts.StateMachine.GameStateMachin.GameState
         public float timerCount=4;
 
 
-        public GameBulletTime( GameSM stateMachine) : base(stateMachine)
+        public GameBulletTime( GameSm stateMachine) : base(stateMachine)
         {
         }
 

@@ -14,7 +14,7 @@ public class GameUIControllers : MonoBehaviour
 
     private void Start()
     {
-        _gameBulletTime = (GameBulletTime)GameSM.Instance.FindState(TypeOfGameState.GameBulletTime);
+        _gameBulletTime = (GameBulletTime)GameSm.Instance.FindState(TypeOfGameState.GameBulletTime);
         _toogleBulletTimeOnOff.onValueChanged.AddListener(OnOffBulletTime);
         _bulletTimer.onValueChanged.AddListener(ChangeBulletTime);
         _timeDilaed.onValueChanged.AddListener(ChangeTimeScale);

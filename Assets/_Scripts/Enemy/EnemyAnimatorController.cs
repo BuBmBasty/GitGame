@@ -11,12 +11,14 @@ namespace _Scripts.Enemy
         [SerializeField] private CircleCollider2D _circleCollider;
         [SerializeField] private Animator _animator;
         private bool _isWakeUp;
+        private EnemySm _enemySm;
         private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
         private static readonly int Punch = Animator.StringToHash("Punch");
 
         private void Start()
         {
-            GetComponentInParent<EnemySm>().Move.AddListener(RunAnimation);
+            _enemySm = GetComponentInParent<EnemySm>();
+            _enemySm.Move.AddListener(RunAnimation);
         }
 
         public void StartWakeUp()
@@ -41,6 +43,11 @@ namespace _Scripts.Enemy
         public void PunchAnimation(bool isPunch)
         {
             _animator.SetBool(Punch,isPunch);
+        }
+
+        public void StepSound()
+        {
+            _enemySm.step.Invoke();
         }
     }
 }

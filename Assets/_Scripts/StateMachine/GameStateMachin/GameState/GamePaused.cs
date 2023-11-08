@@ -5,7 +5,7 @@ namespace _Scripts.StateMachine.GameStateMachin.GameState
     public class GamePaused : BaseGameState
     {
    
-        public GamePaused(GameSM stateMachine) : base(stateMachine)
+        public GamePaused(GameSm stateMachine) : base(stateMachine)
         {
         }
 

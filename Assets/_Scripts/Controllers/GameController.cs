@@ -12,8 +12,7 @@ namespace _Scripts.Controllers
         public static GameController instance = null;
         [HideInInspector]public UnityEvent _enemyDead;
         [Header("Data from bullettime visual")]
-        [SerializeField] private CinematicCameraTransform _cinemaCamera;
-        [SerializeField] private GameObject _gameUI;
+        [SerializeField] private CinematicCameraTransform _cinemaCamera;     
         [Header("Respawn data")]
         [SerializeField] private int _stageCount;
         [SerializeField] private int _maxEnemyOnMap;
@@ -74,9 +73,8 @@ namespace _Scripts.Controllers
             else if (_contEnemy<=0)
             {
                 _cinemaCamera.gameObject.SetActive(true);
-                _gameUI.SetActive(false);
                 _cinemaCamera.target = EnemyRespawn.Instance.FinalEnemyTransform();
-                GameSM.Instance.changeStateWithNaming.Invoke(TypeOfGameState.GameBulletTime);
+                GameSm.Instance.changeStateWithNaming.Invoke(TypeOfGameState.GameBulletTime);
                 StartCoroutine(StartNewStage());
             }
         }
@@ -84,7 +82,6 @@ namespace _Scripts.Controllers
         IEnumerator StartNewStage()
         {
             yield return new WaitForSeconds(5f);
-            _gameUI.SetActive(true);
             _cinemaCamera.gameObject.SetActive(false);
             _deadEnemy=0;
             _stageCount += _upCount;

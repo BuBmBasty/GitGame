@@ -31,10 +31,10 @@ public class OptionsUIController : MonoBehaviour
    {
       _buttons.SetActive(true);
       gameObject.SetActive(false);
-      if (GameSM.Instance.currentState.Name == TypeOfGameState.GamePause)
+      if (GameSm.Instance.currentState.Name == TypeOfGameState.GamePause)
       {
          Time.timeScale = 1;
-         GameSM.Instance.changeStateWithNaming.Invoke(GameSM.Instance.previouseState);
+         GameSm.Instance.changeStateWithNaming.Invoke(GameSm.Instance.previouseState);
       }
    }
 

@@ -53,12 +53,15 @@ namespace _Scripts.Enemy
             _blood.transform.forward = direction;
             _blood.Play();
             _currentHealth -= damage;
+           
             if (_currentHealth <= 0 && !_isDead)
             {
+                _enemySM.dead.Invoke();
                 Dead(damage,direction);
             }
             else if (!_isDead)
             {
+                _enemySM.damage.Invoke();
                 DOTween.To(() => _rigController.weight, x => _rigController.weight = x, 1, 0.5f)
                     .OnComplete(() => DOTween.To(() => _rigController.weight, x => _rigController.weight = x, 0, 0.5f));
                 _punchTransform.position =

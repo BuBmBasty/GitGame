@@ -5,7 +5,10 @@ namespace _Scripts.StateMachine.GameStateMachin.GameState
 {
     public class GameLobby : BaseGameState
     {
-        public GameLobby(GameSM stateMachine) : base(stateMachine)
+        [Header("OSTMusic")] 
+        [SerializeField] private AudioClip _start;
+        [SerializeField] private AudioClip _loop;
+        public GameLobby(GameSm stateMachine) : base(stateMachine)
         {
         }
 
@@ -13,7 +16,10 @@ namespace _Scripts.StateMachine.GameStateMachin.GameState
         {
             Debug.Log(Name);
             if (SceneManager.GetActiveScene().name != "Lobby")
+            {
+                OSTController.Instance.newOstMusic.Invoke(_start,_loop);
                 SceneManager.LoadScene("Lobby");
+            }
         }
     }
 }

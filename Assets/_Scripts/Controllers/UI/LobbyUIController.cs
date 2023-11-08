@@ -44,6 +44,6 @@ public class LobbyUIController : MonoBehaviour
     IEnumerator StartGameCoroutine(float timer)
     {
         yield return new WaitForSeconds(timer);
-        GameSM.Instance.changeStateWithNaming.Invoke(_startGameState);
+        GameSm.Instance.changeStateWithNaming.Invoke(_startGameState);
     }
 }

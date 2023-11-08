@@ -20,25 +20,9 @@ public class GraphicsUISetting : MonoBehaviour
 
     private void ChangeShadow(int set)
     {
-        switch (set)
-        {
-            case 0:
-                QualitySettings.shadows = ShadowQuality.Disable;
-                break;
-            case 1:
-                QualitySettings.shadows = ShadowQuality.HardOnly;
-                QualitySettings.shadowResolution = ShadowResolution.Low;
-                break;
-            case 2:
-                QualitySettings.shadows = ShadowQuality.HardOnly;
-                QualitySettings.shadowResolution = ShadowResolution.Medium;
-                break;
-            case 3:
-                QualitySettings.shadows = ShadowQuality.HardOnly;
-                QualitySettings.shadowResolution = ShadowResolution.High;
-                break;
-        }
-       
+        
+            QualitySettings.SetQualityLevel(set, false);
+        
     }
 
     private void ChangeResolution(int set)

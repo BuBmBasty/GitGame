@@ -6649,7 +6649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1081694393301332575
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6684,7 +6684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _resolutionSetting: {fileID: 6140033452003764001}
-  _shadowSetting: {fileID: 0}
+  _shadowSetting: {fileID: 737848980375507916}
 --- !u!1 &8106796861011045231
 GameObject:
   m_ObjectHideFlags: 0

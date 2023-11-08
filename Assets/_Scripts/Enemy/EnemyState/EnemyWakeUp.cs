@@ -13,6 +13,7 @@ namespace _Scripts.Enemy.EnemyState
 
         public override void Enter()
         {
+            _enemySm.wakeUp.Invoke();
             _enemySm.Move.Invoke(0,0);
         }
 

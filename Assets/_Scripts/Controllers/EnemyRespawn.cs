@@ -51,7 +51,6 @@ namespace _Scripts.Controllers
             {
                 if (!enemy.gameObject.activeSelf)
                 {
-                    enemy.isActive = true;
                     ActivateEnemy(enemy);
                     return;
                 }
