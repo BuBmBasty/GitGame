@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class OSTController : MonoBehaviour
 {
     [HideInInspector] public UnityEvent<AudioClip, AudioClip> newOstMusic;
-    private AudioClip _start, _loop;
+    [SerializeField] private AudioClip _start, _loop;
     private AudioSource _audioSource;
     
     #region SingleTone
@@ -21,7 +21,9 @@ public class OSTController : MonoBehaviour
         { 
             Destroy(gameObject); 
         }
+
         DontDestroyOnLoad(gameObject);
+        StartCoroutine(StartOstMusicCoroutine());
     }
     #endregion
     private void Start()

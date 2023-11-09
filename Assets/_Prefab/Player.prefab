@@ -354,7 +354,7 @@ SkinnedMeshRenderer:
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 3
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -805,6 +805,7 @@ GameObject:
   - component: {fileID: 4842344368204587245}
   - component: {fileID: 8022709071044359015}
   - component: {fileID: 268168144161506515}
+  - component: {fileID: 4329054306668962642}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -848,14 +849,14 @@ MonoBehaviour:
       m_Calls: []
   _walkSpeed: 10
   _runSpeed: 20
-  MoveNoneGun:
+  moveNoneGun:
     m_PersistentCalls:
       m_Calls: []
-  _movementJoy: {fileID: 0}
-  _fireJoystick: {fileID: 0}
-  _leftHandRig: {fileID: 4084298490068049941}
-  _rightHandRig: {fileID: 7290787619994232984}
-  _startWeapon: {fileID: 11400000, guid: 607b077aa1a6d3e4889f7ad70887b83e, type: 2}
+  movementJoy: {fileID: 0}
+  fireJoystick: {fileID: 0}
+  leftHandRig: {fileID: 4084298490068049941}
+  rightHandRig: {fileID: 7290787619994232984}
+  startWeapon: {fileID: 11400000, guid: 607b077aa1a6d3e4889f7ad70887b83e, type: 2}
 --- !u!114 &4689947742644657745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -942,6 +943,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.75
+--- !u!114 &4329054306668962642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6446935005506993794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 497679044574a9544a6ead4c903bf5a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startHealth: 100
 --- !u!1 &6764808937609399239
 GameObject:
   m_ObjectHideFlags: 0

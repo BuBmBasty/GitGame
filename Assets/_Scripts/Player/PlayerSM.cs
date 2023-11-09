@@ -42,8 +42,6 @@ namespace _Scripts.Player
 
         private void Start()
         {
-            GameController.instance.SetTarget(ThisTransform);
-            
             PlayerNonGun = new PlayerNonGun(this);
             PlayerGunState = new PlayerGunState(this);
             

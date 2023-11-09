@@ -2897,12 +2897,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853c0062be7cbfb46b74b13172127cf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyDead:
+  enemyDead:
+    m_PersistentCalls:
+      m_Calls: []
+  playerAdd:
     m_PersistentCalls:
       m_Calls: []
   _cinemaCamera: {fileID: 1428599057}
-  _stageCount: 15
-  _maxEnemyOnMap: 10
+  _stageCount: 30
+  _maxEnemyOnMap: 15
   _upCount: 10
   _upEnemyOnMap: 5
 --- !u!1 &1988517268
@@ -3643,32 +3646,11 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 180162912115100, guid: 1dc45cd1e91ff484a8f009a16709dac0, type: 3}
-      propertyPath: leftHandRig
-      value: 
-      objectReference: {fileID: 453302014701952972}
-    - target: {fileID: 180162912115100, guid: 1dc45cd1e91ff484a8f009a16709dac0, type: 3}
       propertyPath: movementJoy
       value: 
       objectReference: {fileID: 1710568802}
     - target: {fileID: 180162912115100, guid: 1dc45cd1e91ff484a8f009a16709dac0, type: 3}
-      propertyPath: startWeapon
-      value: 
-      objectReference: {fileID: 11400000, guid: 607b077aa1a6d3e4889f7ad70887b83e,
-        type: 2}
-    - target: {fileID: 180162912115100, guid: 1dc45cd1e91ff484a8f009a16709dac0, type: 3}
-      propertyPath: _movementJoy
-      value: 
-      objectReference: {fileID: 1710568802}
-    - target: {fileID: 180162912115100, guid: 1dc45cd1e91ff484a8f009a16709dac0, type: 3}
       propertyPath: fireJoystick
-      value: 
-      objectReference: {fileID: 1019212275}
-    - target: {fileID: 180162912115100, guid: 1dc45cd1e91ff484a8f009a16709dac0, type: 3}
-      propertyPath: rightHandRig
-      value: 
-      objectReference: {fileID: 453302014701952971}
-    - target: {fileID: 180162912115100, guid: 1dc45cd1e91ff484a8f009a16709dac0, type: 3}
-      propertyPath: _fireJoystick
       value: 
       objectReference: {fileID: 1019212275}
     - target: {fileID: 4055487782991056235, guid: 1dc45cd1e91ff484a8f009a16709dac0,
@@ -3721,11 +3703,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6411937361987475831, guid: 1dc45cd1e91ff484a8f009a16709dac0,
-        type: 3}
-      propertyPath: m_ReflectionProbeUsage
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6446935005506993794, guid: 1dc45cd1e91ff484a8f009a16709dac0,
         type: 3}
       propertyPath: m_Name
@@ -3736,30 +3713,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1dc45cd1e91ff484a8f009a16709dac0, type: 3}
---- !u!114 &453302014701952971 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7290787619994232984, guid: 1dc45cd1e91ff484a8f009a16709dac0,
-    type: 3}
-  m_PrefabInstance: {fileID: 453302014701952970}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 796b75e345bd64d47a31edd757bd2670, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &453302014701952972 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4084298490068049941, guid: 1dc45cd1e91ff484a8f009a16709dac0,
-    type: 3}
-  m_PrefabInstance: {fileID: 453302014701952970}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 796b75e345bd64d47a31edd757bd2670, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

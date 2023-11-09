@@ -43,7 +43,7 @@ namespace _Scripts.Enemy
         {
             _thisTransform = GetComponent<Transform>();
             _character2DController = GetComponent<Character2DController>();
-            _target = GameController.instance.GetTarget();
+            _target = GameController.instance.target;
             ChangeState(_enemyWakeUp);
         }
 

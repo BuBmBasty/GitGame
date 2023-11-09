@@ -101,7 +101,7 @@ namespace _Scripts.Controllers
     
         public virtual IEnumerator SetNonActive()
         {
-            GameController.instance._enemyDead.Invoke();
+            GameController.instance.enemyDead.Invoke();
             yield return new WaitForSeconds(5f);
             foreach (var rb in _rigidbodyDatasTemp)
             {

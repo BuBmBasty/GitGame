@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
+using _Scripts.Player;
 using _Scripts.StateMachine.GameStateMachin;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace _Scripts.Controllers
@@ -10,7 +12,11 @@ namespace _Scripts.Controllers
     public class GameController : MonoBehaviour
     {
         public static GameController instance = null;
-        [HideInInspector]public UnityEvent _enemyDead;
+        public Transform target => _target;
+        public PlayerHealthController playerHealthController => _playerHealthController;
+        
+        [HideInInspector]public UnityEvent enemyDead;
+        [HideInInspector]public UnityEvent <PlayerHealthController> playerAdd;
         [Header("Data from bullettime visual")]
         [SerializeField] private CinematicCameraTransform _cinemaCamera;     
         [Header("Respawn data")]
@@ -21,9 +27,12 @@ namespace _Scripts.Controllers
 
 
         private Transform _target;
+        private PlayerHealthController _playerHealthController;
         private int _contEnemy, _deadEnemy, _startRes;
         private int _lvl;
-        void Awake()
+
+        #region Singletone
+        private void Awake()
         {
             _cinemaCamera.gameObject.SetActive(false);
             if (instance == null) 
@@ -35,27 +44,25 @@ namespace _Scripts.Controllers
                 Destroy(gameObject); 
             }
             DontDestroyOnLoad(gameObject);
+            playerAdd.AddListener(SetTarget);
+            enemyDead.AddListener(CheckEnemyCount);
         }
+        #endregion
 
+        
         private void Start()
         {
-            _enemyDead.AddListener(CheckEnemyCount);
             UIController.Instance.UpdateLevel(0);
             UIController.Instance.UpdateDeadEnemy(0);
             NewStageRespawn();
         }
 
-        public Transform GetTarget()
+        public void SetTarget(PlayerHealthController targetIn)
         {
-            return _target;
+            _target = targetIn.transform;
+            _playerHealthController = targetIn;
         }
 
-        public void SetTarget(Transform target)
-        {
-            _target = target;
-        }
-    
-        [Obsolete("Obsolete")]
         private void CheckEnemyCount()
         {
             _contEnemy--;
