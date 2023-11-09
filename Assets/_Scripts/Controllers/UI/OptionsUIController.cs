@@ -20,11 +20,11 @@ public class OptionsUIController : MonoBehaviour
 
    private void Start()
    {
+      _soundButton.OnSelect(null); 
       _soundButton.onClick.AddListener(OnVolumeController);
       _graphicsButton.onClick.AddListener(OnGraphicsController);
       _gameButton.onClick.AddListener(OnGameController);
       _backButton.onClick.AddListener(BackInScreenLobby);
-      _soundButton.onClick.Invoke();
    }
 
    private void BackInScreenLobby()

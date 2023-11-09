@@ -20,6 +20,14 @@ public class GameUIControllers : MonoBehaviour
         _timeDilaed.onValueChanged.AddListener(ChangeTimeScale);
     }
 
+    private void OnEnable()
+    {
+        if (_gameBulletTime == null)
+            _gameBulletTime = (GameBulletTime)GameSm.Instance.FindState(TypeOfGameState.GameBulletTime);
+        _bulletTimer.value = _gameBulletTime.bulletTimer/5;
+        _timeDilaed.value =  _gameBulletTime.timerCount/4;
+    }
+
     private void ChangeTimeScale(float pos)
     {
         pos = Mathf.Lerp(1, 4, pos);

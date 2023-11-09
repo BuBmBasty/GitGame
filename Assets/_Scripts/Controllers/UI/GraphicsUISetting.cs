@@ -1,39 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Serialization;
 
 public class GraphicsUISetting : MonoBehaviour
 {
-    [SerializeField] private TMP_Dropdown _resolutionSetting, _shadowSetting;
+    [SerializeField] private TMP_Dropdown _qualitySetting;
 
-    private int _screenHeight, _screenWidht; 
     void Start()
     {
-        _screenHeight = Screen.height;
-        _screenWidht = Screen.width;
-        Debug.Log(_screenHeight + " / " + _screenWidht);
-        _resolutionSetting.onValueChanged.AddListener(ChangeResolution);
-        _shadowSetting.onValueChanged.AddListener(ChangeShadow);
+        _qualitySetting.onValueChanged.AddListener(Quality);
     }
 
-    private void ChangeShadow(int set)
+    private void OnEnable()
     {
-        
-            QualitySettings.SetQualityLevel(set, false);
-        
+      _qualitySetting.SetValueWithoutNotify(QualitySettings.GetQualityLevel());
     }
 
-    private void ChangeResolution(int set)
+    private void Quality(int set)
     {
-        Debug.Log(_screenHeight + " / " + _screenWidht + " // " +set);
-        Screen.SetResolution(_screenWidht/(1+set),_screenHeight/(1+set),FullScreenMode.FullScreenWindow);
+        QualitySettings.SetQualityLevel(set, false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
+
 }
